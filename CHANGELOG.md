@@ -1,6 +1,119 @@
 ## Master
 
+## v102 (2/6/2014)
+
 Features:
+
+Bugfixes:
+
+* use blacklist of env vars, so users can't break the build process
+
+
+## v101 (2/5/2014)
+
+Features:
+
+Bugfixes:
+
+* fix rake detection when DATABASE_URL is not present
+* support BUNDLE_WITHOUT when using ponies
+* quote ponies env vars, so build doesn't break
+
+
+## v100 (2/4/2014)
+
+Features:
+
+Bugfixes:
+
+* compile psych with libyaml 0.1.5 for CVE-2013-6393
+
+## v99 (2/4/2014)
+
+Features:
+
+* Noop
+
+Bugfixes:
+
+
+## v98 (1/30/2014)
+
+Features:
+
+Bugfixes:
+
+* Use vendored JDK binary during build
+
+
+## v97 (1/30/2014)
+
+Features:
+
+Bugfixes:
+
+* Actually finalize method rename to `install_bundler_in_app`
+
+
+## v96 (1/29/2014)
+
+Features:
+
+Bugfixes:
+
+* Finalize method rename to `install_bundler_in_app`
+
+## v95
+
+Rollback to v93
+
+## v94 (1/29/2014)
+
+Features:
+
+Bugfixes:
+
+* Fixed `uninitialized constant Rake::DSL` error when running rake tasks on Ruby 1.9.2
+
+## v93 (01/28/2014)
+
+Features:
+
+* buildpack-env-arg (ponies) support
+
+Bugfixes:
+
+## v92 (01/27/2014)
+
+Features:
+
+Bugfixes:
+
+* Only display rake error messages if a `Rakefile` exists
+* when detecting for ruby version, don't use stderr messages
+
+## v91 (01/16/2014)
+
+Features:
+
+* Parallel gem installation with bundler 1.5.2
+
+Bugfixes:
+
+
+## v90 (01/09/2014)
+
+Features:
+
+* Rollback v89 due to bug in bundler 1.5.1
+
+Bugfixes:
+
+## v89 (01/09/2014)
+
+Features:
+
+* Use most recent version of bundler with support for parallel Gem installation
 
 Bugfixes:
 
