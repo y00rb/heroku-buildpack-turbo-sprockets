@@ -80,7 +80,7 @@ private
 
           # If 'turbo-sprockets-rails3' gem is available, run 'assets:clean_expired' and
           # cache assets if task was successful.
-          if gem_is_bundled?('turbo-sprockets-rails3')
+          if bundler.has_gem?('turbo-sprockets-rails3')
             log("assets_clean_expired") do
               ( clean_expired_assets = rake.task("assets:clean_expired") ).invoke
               if clean_expired_assets.success?
