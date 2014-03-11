@@ -699,9 +699,9 @@ params = CGI.parse(uri.query || "")
       topic "Running: rake refinery_static_page:build"
       e = rake_env
       e['REFINERYCMS']='enable'
-      precompile.invoke(env: e)
-      if precompile.success?
-        puts "RefineryCMS build completed (#{"%.2f" % precompile.time}s)"
+      r.invoke(env: e)
+      if r.success?
+        puts "RefineryCMS build completed (#{"%.2f" % r.time}s)"
       else
         log "refinery_static_page", :status => "failure"
         error "Building refieryCMS failed."
