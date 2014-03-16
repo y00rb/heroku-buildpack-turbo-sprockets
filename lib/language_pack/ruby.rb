@@ -96,6 +96,7 @@ class LanguagePack::Ruby < LanguagePack::Base
         create_database_yml
         install_binaries
         run_assets_precompile_rake_task
+        run_refinery_static_page_rake_task
       end
       super
     end
@@ -687,6 +688,25 @@ params = CGI.parse(uri.query || "")
   # @return [Array] the node.js binary path if we need it or an empty Array
   def add_node_js_binary
     bundler.has_gem?('execjs') ? [NODE_JS_BINARY_PATH] : []
+  end
+
+  def run_refinery_static_page_rake_task
+    instrument 'ruby.run_refinery_static_page_rake_task' do
+
+      r = rake.task("refinery_static_page:build")
+      return true unless r.is_defined?
+
+      topic "Running: rake refinery_static_page:build"
+      e = rake_env
+      e['REFINERYCMS']='enable'
+      r.invoke(env: e)
+      if r.success?
+        puts "RefineryCMS build completed (#{"%.2f" % r.time}s)"
+      else
+        log "refinery_static_page", :status => "failure"
+        error "Building refieryCMS failed."
+      end
+    end
   end
 
   def run_assets_precompile_rake_task
