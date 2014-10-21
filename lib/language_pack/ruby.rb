@@ -297,7 +297,11 @@ ERROR_MSG
             FileUtils.rm(file)
             FileUtils.rm(sha_file)
           else
-            @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz")
+            if ruby_version.version == "ruby-2.1.3"
+              @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz", :prefix_node=>LanguagePack::Base::DEFAULT_LEGACY_STACK)
+            else
+              @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz")
+            end
           end
         end
       end
