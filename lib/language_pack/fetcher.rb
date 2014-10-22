@@ -16,8 +16,11 @@ module LanguagePack
       run!(curl)
     end
 
-    def fetch_untar(path)
+    def fetch_untar(path, options={})
       curl = curl_command("#{@host_url.join(path)} -s -o")
+      if options[:prefix_node]
+        curl = curl_command("#{@host_url.join(options[:prefix_node],path)} -s -o")
+      end
       run!("#{curl} - | tar zxf -")
     end
 
